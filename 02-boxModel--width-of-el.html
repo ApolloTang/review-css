@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>box model review 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+<style media="screen" type="text/css">
+
+/*=======
+clear fix
+see http://nicolasgallagher.com/micro-clearfix-hack/
+========= */
+
+/* For modern browsers */
+.cf:before, .cf:after {content:""; display:table; }
+.cf:after {clear:both;}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {zoom:1;}
+
+
+
+body { background-color: #ede; }
+#box1 {
+    outline: 1px solid red;
+}
+
+.span1 {
+    outline: 1px solid green;
+}
+
+#box2 {
+    outline: 1px solid red;
+    width: auto;
+}
+
+/*
+   key idea to notice:
+   block element expand its width to parrent container,
+   while inline element shrink its width to content
+
+    http://www.tek-tips.com/viewthread.cfm?qid=1441410
+
+    don't know what width: auto means
+
+ */
+
+</style>
+    </head>
+    <body>
+
+<div id="box1" class="cf" >
+    some text in div
+</div>
+
+
+<span class="span1">
+    some text in span
+</span>
+
+
+
+<div id="box2" class="cf" >
+    width of this box is auto
+</div>
+
+<script src="http://localhost:8001/js/lib/jquery-1.11.0.js"></script>
+<script>
+
+
+</script>
+    </body>
+</html>

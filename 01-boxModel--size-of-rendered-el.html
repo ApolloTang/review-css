@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>box model review 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+<style media="screen" type="text/css">
+body { background-color: #ede; }
+#box1 {
+    margin : 10px;
+    border: 10px red solid;
+    background-color: green;
+    width: 100px; height: 100px;
+    padding: 10px;
+}
+
+/*
+   key idea to notice:
+
+       the size of the element#box1 = content + padding + border
+       you can see the background through padding,
+
+ */
+
+#box1-inner {
+    /* this box has a dimention same as content of element#1 */
+    background-color: yellow;
+    width: 100px; height: 100px;
+}
+
+</style>
+    </head>
+    <body>
+
+<div id="box1" >
+    <div id="box1-inner" ></div>
+</div>
+
+<script src="http://localhost:8001/js/lib/jquery-1.11.0.js"></script>
+<script>
+
+
+</script>
+    </body>
+</html>
