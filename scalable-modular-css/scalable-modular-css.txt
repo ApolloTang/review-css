@@ -1,0 +1,181 @@
+Categorizing CSS Rules
+=======================
+
+    Answer these questions:
+
+      • How do you decide whether to use ID, class, and other selectors?
+      • Which elements should get the styling behaviors?
+      • How do you make it easy to understand how your site and
+        your styles are doing?
+
+    Categorizing codify patterns — things that repeat themselves
+    within our design.  Results in less code, easier maintenance
+    and greater consistency in the user experience.
+
+    There are five types of categories:
+
+        1. Base
+        2. Layout
+        3. Module
+        4. State
+        5. Theme
+
+=======================================================================
+
+1. Base Rules:
+
+    In a way, Base Rules is like crafting your own CSS Reset:
+
+        Developing your own set of default styles instead of
+        using CSS Reset can be an advantage since may reset frameworks
+        can be overly aggressive and introduce more problems than they
+        solve --- like removing margin/padding only to introduce them
+        again later --- this creates duplicated code.
+
+    Does not involve Class or Id selectors
+
+    Never use !important
+
+    Defining the *default* styling for how that element should
+    look in all occurrences on the page
+
+    Base applies to:
+
+        Single element
+
+            html, body, form { ... }
+
+        Could include attribute selectors:
+
+            input[type=text] { ... }
+
+        Pseudo-class
+
+            a:hover
+
+        Child selectors or sibling selectors.
+
+            li a { ... }
+            ul > li { ... }
+
+
+2. Layout Rules
+
+    Use IDs for unique layout within a page:
+
+
+        <div id="header"></div>
+        <div id="sidebar"></div>
+        <div id="maincontent"></div>
+
+        - - - - -
+
+        #header { … }
+        #sidebar { … }
+        #maincontent { … }
+
+    Use Classes to modify layout behaviour:
+
+        Example 1:
+
+        #article { float: left; }
+        #sidebar { float: right; }
+        .l-flipped #article { float: right; }
+        .l-flipped #sidebar { float: left; }
+
+        Example 2:
+
+        #article { width: 80%; float: left; }
+        #sidebar { width: 20%; float: right; }
+        .l-fixed #article { width: 600px; }
+        .l-fixed #sidebar { width: 200px; }
+
+    Prefix modifier class names with "l" to distinguish them
+    from modules and states.
+
+
+3. Module Rules
+
+    Modules sit inside Layout components.
+
+    Examples of module:
+
+        navigation-bar
+        carousels
+        dialogs
+        widgets
+
+    Modules can be nested inside another module.
+    Standalone component (can be moved into different layout)
+
+
+    Naming of module:
+
+        Use Classes, no Ids
+
+        Modules are going to be the bulk of any project. As a result, having
+        every module start with a prefix like .module- would be needlessly
+        verbose. Modules just use the name of the module itself.
+
+        BAD:
+
+            .module-carousels-type-A {...}
+
+        GOOD:
+
+            .carousels-type-A {...}
+
+    Avoid element selectors:
+    -----------------------
+
+        Less desirable:
+
+            <div class="fld">
+                <span>Folder Name</span>
+            </div>
+
+            - - - - - -
+
+            /* The Folder Module */
+            .fld span { ... }
+
+        Better:
+
+            <div class="fld">
+                <span class="fld-name">Folder Name</span>
+                <span class="fld-items">(32 items)</span>
+            </div>
+
+            - - - - - -
+
+            /* The Folder Module */
+            .fld { ... }
+            .fld-name { ... }
+            .fld-items { ... }
+
+        The more semantically generic the HTML element (like a
+        span or div), the more likely it will create a conflict.
+
+        Use element selector only if you are extremely confident
+        that the element will not be confused with another
+        element.
+
+        If you do wish to use an element selector, it should be within one
+        level of a class selector. In other words, you should be in a situation
+        to use child selectors.
+
+        Elements with greater semantics like headings are more likely to
+        appear by themselves within a container and you are more likely
+        able to use an element selector successfully.
+
+            <div id="sidebar">
+                <h2>Side Note</h2>
+            </div>
+
+            - - - - -
+
+            #sidebar { ... }
+            #sidebar > h2 {...}
+
+
+
