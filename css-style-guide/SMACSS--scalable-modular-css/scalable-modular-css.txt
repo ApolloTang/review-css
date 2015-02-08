@@ -129,6 +129,60 @@ Categorizing CSS Rules
 
             .carousels-type-A {...}
 
+
+
+3. State Rules
+
+    ** State rules indicate a javascript dependency **
+
+    State rules are ways to describe how our modules or layouts will
+    look when in a particular state:
+
+    • Is it hidden or expanded?
+    • Is it active or inactive?
+    • layout looks on screens that are smaller or bigger.
+    • How a module might look in different views like the home
+      page or the inside page.
+
+    <div id="header" class="is-collapsed"></div>
+    <div class="msg is-error"></div>
+    <form>
+        <!-- label is hidden from sight but still seen by the screen readers -->
+        <label for="searchbox" class="is-hidden">Search</label>
+        <input type="search" id="searchbox">
+    </form>
+
+    !important is allowed in state
+    -------------------------------
+
+        Since the state will likely need to override the style of a more complex
+        rule set, the use of !important is recommended.
+
+        Use of !important never result in conflict because you won’t normally
+        have two states applied to the same module or two states that
+        tend to affect the same set of styles, so specificity conflicts
+        from using !important should be few and far between.
+
+        ** Leave !important off until you actually need it.
+
+        ** Remember, the use of !important should be avoided for all other
+           rule types. Only states should have it.
+
+
+    Module specific state rule
+    --------------------------
+
+        In a case where a state rule is made for a specific module, the state
+        class name should include the module name in it.
+
+        The state rule should also reside with the module rules and not
+        with the rest of the global state rules.
+
+
+
+
+=======================================================
+
     Avoid element selectors:
     -----------------------
 
