@@ -1,0 +1,100 @@
+
+Sub-classing
+=============
+
+While more specific layout components assigned with IDs could be
+used to provide specialized styling for modules, sub-classing the
+module will allow the module to be moved to other sections of the
+site more easily and you will avoid increasing the specificity unnecessarily.
+
+
+Example:
+
+    BAD:
+        code : subclassing-1
+
+        /* module pod */
+        .pod { width: 100%; outline: green solid 1px; }
+        .pod input[type=text] { width: 50%; }
+        .pod label { width: 50%; }
+
+        /* module pod (in side bar) */
+        #sidebar .pod input[type=text] { width: 100%; }
+        #sidebar .pod label { width: 100%; text-align:left; }
+
+        /* module callout */
+        .callout { outline: red solid 1px; width: 140px; }
+        .callout input[type=text] { width: 110px; }      /* <-- repeatition  */
+
+        /* module callout (in side bar )*/
+        #sidebar .callout input[type=text] { width: 110px; }   /* <-- repeatition */
+
+        - - - - - - -
+
+        <div id="main">
+            <div class="pod"> <label>Text: </label><input type=text> </div>
+            <div class="callout"> <input type=text> </div>
+        </div>
+        <div id="sidebar">
+            <div class="pod"> <label>Text:</label><input type=text> </div>
+            <div class="callout"> <input type=text> </div>
+        </div>
+
+    Good:
+
+        code : subclassing-2
+
+        /* module pod */
+        .pod { width: 100%; outline: green solid 1px; }
+        .pod input[type=text] { width: 50%; }
+        .pod label { width: 50%; }
+
+        /* module pod in constrained space ( sub-class of module pod ) */
+        .pod-constrained-space input[type=text] { width: 100%; }
+        .pod-constrained-space label { width: 100%; text-align:left; }
+
+        /* module callout */
+        .callout { outline: red solid 1px; width: 140px; }
+        .callout input[type=text] { width: 110px; }
+
+        - - - - - - -
+
+        <div id="main">
+            <div class="pod "> <label>Text: </label><input type=text> </div>
+            <div class="callout"> <input type=text> </div>
+        </div>
+        <div id="sidebar">
+            <div class="pod pod-constrained-space"> <label>Text:</label><input type=text> </div>
+            <div class="callout"> <input type=text> </div>
+        </div>
+
+
+    Even better:
+
+
+        code : subclassing-3
+
+        /* module pod */
+        .pod { width: 100%; outline: green solid 1px; }
+        .pod input[type=text] { width: 50%; }
+        .pod label { width: 50%; }
+
+        /* module pod in constrained space ( sub-class of module pod ) */
+        .pod.constrained-space input[type=text] { width: 100%; }
+        .pod.constrained-space label { width: 100%; text-align:left; }
+
+        /* module callout */
+        .callout { outline: red solid 1px; width: 140px; }
+        .callout input[type=text] { width: 110px; }
+
+
+        - - - - - - -
+
+        <div id="main">
+            <div class="pod "> <label>Text: </label><input type=text> </div>
+            <div class="callout"> <input type=text> </div>
+        </div>
+        <div id="sidebar">
+            <div class="pod constrained-space"> <label>Text:</label><input type=text> </div>
+            <div class="callout"> <input type=text> </div>
+        </div>

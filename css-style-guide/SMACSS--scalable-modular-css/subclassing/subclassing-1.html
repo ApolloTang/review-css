@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>subclassing-1</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+        * {margin:0; padding:0; border:0; }
+        input[type=text]  {background-color: #ccc;}
+        label {display: inline-block; text-align: right;}
+
+        #main { float: left; width: 400px; }
+        #sidebar { float : left; width: 200px; }
+
+        /* module pod */
+        .pod { width: 100%; outline: green solid 1px; }
+        .pod input[type=text] { width: 50%; }
+        .pod label { width: 50%; }
+
+        /* module pod (in side bar) */
+        #sidebar .pod input[type=text] { width: 100%; }
+        #sidebar .pod label { width: 100%; text-align:left; }
+
+        /* module callout */
+        .callout { outline: red solid 1px; width: 140px; }
+        .callout input[type=text] { width: 110px; }      /* <-- repeatition  */
+
+        /* module callout (in side bar )*/
+        #sidebar .callout input[type=text] { width: 110px; }   /* <-- repeatition */
+
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <div class="pod"> <label>Text: </label><input type=text> </div>
+        <div class="callout"> <input type=text> </div>
+    </div>
+    <div id="sidebar">
+        <div class="pod"> <label>Text:</label><input type=text> </div>
+        <div class="callout"> <input type=text> </div>
+    </div>
+
+    <script src="http://localhost:8001/js/lib/jquery-1.11.0.js"></script>
+    <script>
+        // js here
+    </script>
+</body>
+
+</html>
