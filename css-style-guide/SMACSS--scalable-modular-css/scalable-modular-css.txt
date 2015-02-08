@@ -1,16 +1,20 @@
 Categorizing CSS Rules
 =======================
 
-    Answer these questions:
+    Scalable modular css help provide solution to these questions:
 
       • How do you decide whether to use ID, class, and other selectors?
       • Which elements should get the styling behaviors?
       • How do you make it easy to understand how your site and
         your styles are doing?
 
-    Categorizing codify patterns — things that repeat themselves
-    within our design.  Results in less code, easier maintenance
-    and greater consistency in the user experience.
+    Key to the solution the practice of using categorizing css rules.
+
+    Categorizing codify patterns
+
+        parttern are things that repeat themselves
+        within our design.  Results in less code, easier maintenance
+        and greater consistency in the user experience.
 
     There are five types of categories:
 
@@ -61,8 +65,8 @@ Categorizing CSS Rules
 
 2. Layout Rules
 
-    Use IDs for unique layout within a page:
 
+    Use IDs for unique layout within a page:
 
         <div id="header"></div>
         <div id="sidebar"></div>
@@ -70,9 +74,9 @@ Categorizing CSS Rules
 
         - - - - -
 
-        #header { … }
-        #sidebar { … }
-        #maincontent { … }
+        #header { ... }
+        #sidebar { ... }
+        #maincontent { ... }
 
     Use Classes to modify layout behaviour:
 
@@ -128,30 +132,39 @@ Categorizing CSS Rules
     Avoid element selectors:
     -----------------------
 
-        Less desirable:
+        Use only semantics selector:
 
-            <div class="fld">
-                <span>Folder Name</span>
-            </div>
+            span or div holds has no semantic.
+            h1 has some semantic.
+            Properly named class defined on an element is semantics.
 
-            - - - - - -
+        Example:
 
-            /* The Folder Module */
-            .fld span { ... }
+            Bad:
 
-        Better:
+                <div class="fld">
+                    <span>Folder Name</span>
+                </div>
 
-            <div class="fld">
-                <span class="fld-name">Folder Name</span>
-                <span class="fld-items">(32 items)</span>
-            </div>
+                - - - - - -
 
-            - - - - - -
+                /* The Folder Module */
+                .fld span { ... }
 
-            /* The Folder Module */
-            .fld { ... }
-            .fld-name { ... }
-            .fld-items { ... }
+            Good:
+
+                <div class="fld">
+                    <span class="fld-name">Folder Name</span>
+                    <span class="fld-items">(32 items)</span>
+                </div>
+
+                - - - - - -
+
+                /* The Folder Module */
+                .fld { ... }
+                .fld-name { ... }
+                .fld-items { ... }
+
 
         The more semantically generic the HTML element (like a
         span or div), the more likely it will create a conflict.
