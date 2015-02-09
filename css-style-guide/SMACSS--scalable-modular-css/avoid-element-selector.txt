@@ -1,0 +1,64 @@
+
+    Avoid element selectors:
+    -----------------------
+
+        Use only semantics selector:
+
+            span or div holds has no semantic.
+            h1 has some semantic.
+            Properly named class defined on an element is semantics.
+
+        Example:
+
+            Bad:
+
+                <div class="fld">
+                    <span>Folder Name</span>
+                </div>
+
+                - - - - - -
+
+                /* The Folder Module */
+                .fld span { ... }
+
+            Good:
+
+                <div class="fld">
+                    <span class="fld-name">Folder Name</span>
+                    <span class="fld-items">(32 items)</span>
+                </div>
+
+                - - - - - -
+
+                /* The Folder Module */
+                .fld { ... }
+                .fld-name { ... }
+                .fld-items { ... }
+
+
+        The more semantically generic the HTML element (like a
+        span or div), the more likely it will create a conflict.
+
+        Use element selector only if you are extremely confident
+        that the element will not be confused with another
+        element.
+
+        If you do wish to use an element selector, it should be within one
+        level of a class selector. In other words, you should be in a situation
+        to use child selectors.
+
+        Elements with greater semantics like headings are more likely to
+        appear by themselves within a container and you are more likely
+        able to use an element selector successfully.
+
+            <div id="sidebar">
+                <h2>Side Note</h2>
+            </div>
+
+            - - - - -
+
+            #sidebar { ... }
+            #sidebar > h2 {...}
+
+
+==========================================================
