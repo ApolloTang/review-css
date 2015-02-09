@@ -1,0 +1,78 @@
+Depth of applicability
+======================
+
+
+Study one:
+----------
+
+    Bad: tightly couple css to html
+
+        /* common  to sidebar and footer */
+        .mod-A    { ...  }
+        .mod-A h3 { ...  }
+        .mod-A ul { ...  }
+
+        /* sidebar only */
+        #sidebar mod-A    { ...  }
+        #sidebar mod-A h3 { ...  }
+        #sidebar mod-A ul { ...  }
+
+        /* footer only */
+        #footer mod-A { ...  }
+        #footer mod-A h3 { ...  }
+        #footer mod-A ul { ...  }
+
+        Problem:
+
+            1. relying heavily on a defined HTML structure.
+            2. selectors apply is too deep.
+
+    Better:
+
+        using sub-class
+
+        /* common to sidebar and footer */
+        .mod-A { ...  }
+        .mod-A > h3 { ...  }
+        .mod-A > ul { ...  }
+
+        .mod-A-sidebar { ...  }
+        .mod-A-sidebar > h3 { ...  }
+        .mod-A-sidebar > ul { ...  }
+
+        mod-A-footer { ...  }
+        mod-A-footer > h3 { ...  }
+        mod-A-footer > ul { ...  }
+
+
+Study two:
+----------
+
+    Bad:
+
+        .pod > ul, .pod > ol, .pod > div { ... }
+
+        - - - - - - -
+
+        <div class="pod">
+            <ul class="pod-body">
+                {{#items}}
+                <li>{{item}}</li>
+                {{/items}}
+            </ul>
+        </div>
+
+    Good:
+
+        .pod-body { ... }
+
+        - - - - - - -
+
+        <div class="pod">
+            <ul class="pod-body">
+                {{#items}}
+                <li>{{item}}</li>
+                {{/items}}
+            </ul>
+        </div>
+
