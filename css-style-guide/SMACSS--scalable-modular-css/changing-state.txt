@@ -1,0 +1,66 @@
+
+What is a state change?
+
+    State changes are represented in one of three ways:
+
+        1. class name
+            elements class change its value via JS and visual changes occurs
+        2. pseudo-class
+            No JS involve, and limited to descendants or siblings
+            which pseudo-class applies.
+        3. media query
+            How style should changes under different media
+
+    1. Change via class name
+    ---------------------------
+
+    Three possible nameing systems:
+
+        Sub-module naming convention
+
+            .btn { color: #333; }
+            .btn-pressed { color: #000; }
+            .btn-disabled { opacity: .5; pointer-events: none; }
+
+        State naming convention
+
+            .btn { color: #333; }
+            .btn.is-pressed { color: #000; }
+            .btn.is-disabled { opacity: .5; pointer-events: none; }
+
+        Attribute selectors convention
+
+            .btn[js-state=default] { color: #333; }
+            .btn[js-state=pressed] { color: #000; }
+            .btn[js-state=disabled] { opacity: .5; pointer-events: none; }
+
+            Using attribute selectors to handle state change, advantage:
+
+                • isolating states from layout and module classes
+                • allowing easier transitions between multiple states
+
+
+    2. Change via Pseudo-class
+    -------------------------
+
+        Example of possible permutation state with sub-modules
+        class states and pseudo-class states.
+
+            .btn { ... }
+            .btn:hover { ... }
+            .btn:focus { ... }
+
+            .btn-sub-module { ... }
+            .btn-sub-module:hover { ... }
+
+            .btn.is-active { ... }
+            .btn.is-active:hover { ... }
+
+            .btn-sub-module.is-active { ... }
+            .btn-sub-module.is-active:hover { ... }
+
+
+    3. Change via Media query
+    -------------------------
+
+
