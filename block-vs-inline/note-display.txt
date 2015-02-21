@@ -1,0 +1,64 @@
+
+Block-level Elements
+====================
+
+    form, fieldset,
+    h1..., hr,
+    ul, ol,
+    blockquote, pre,
+    canvas
+    table, tfoot
+
+
+    https://developer.mozilla.org/en/docs/Web/HTML/Block-level_elements
+
+    A block element is an element that has the following characteristics:
+
+        • If no width is set, will expand naturally to fill its parent container
+        • have margins and/or padding
+        • If no height is set, will shrink to height of its child
+          elements (assuming they are not floated or positioned)
+        • By default, will be placed below previous elements in the markup
+          (assuming no floats or positioning on surrounding elements)
+        • Ignores the vertical-align property
+
+
+
+
+Inline Elements:
+================
+
+    b, big, i, small, em, strong,
+    a, br, img, map, object, q, script, span, sub, sup
+    button, input, label, select, textarea
+
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elemente
+
+    • Flows along with text content
+    • Will drop to the next line like
+    • Subject to white-space settings in CSS
+    • Subject to the vertical-align property
+    • Ignore top and bottom margin settings, but will apply left and
+      right margins, and any padding
+    • Ignore the width and height properties
+    • If floated left or right, becomes a block-level element
+
+    Details reference:
+
+    http://dbaron.org/css/2000/01/dibm
+
+Generally speaking:
+
+    can
+
+        put any block element inside another block element.
+        put any inline element inside a block element,
+        inline element inside any other inline element.
+
+    cannot
+
+        put a block element inside an inline element — with one exception:
+
+            You can wrap an <a> element around any content, whether it
+            be block elements, or inline elements or a mixure of both.
+
