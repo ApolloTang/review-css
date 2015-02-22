@@ -7,7 +7,7 @@
     @width: 100px;
     @aspect_ratio: .65;  // = width/height
     @toggle_speed:.2s;
-    @switch_border: 5px;
+    @switch_border: 1px;
 
     @color_on: hsl(0, 100%, 50%);
     @color_off: hsl(120, 100%, 50%);
@@ -94,6 +94,7 @@
         width: @toggle_size;
         height: @toggle_size;
         background-color: @color_toggle;
+        border: 1px solid @color_switch_border;
         -webkit-transition: margin @toggle_speed;
     }
 
