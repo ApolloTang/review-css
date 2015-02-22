@@ -1,10 +1,12 @@
 doctype html
 html
   head
-    title hello world!
+    title toggle-switch-ios-look
     link(rel="stylesheet", href="main.css")
   body
-    h1 we use jade to generate this
-    p It semms like really it works :)
+    .wrapper
+      input(id="toggle-1" class="switch switch-style-round" type="checkbox")
+      label(for="toggle-1")
+        label 1
     script(src="app.js")
 
