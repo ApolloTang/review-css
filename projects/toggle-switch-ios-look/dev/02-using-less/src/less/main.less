@@ -6,6 +6,7 @@
 
     @width: 100px;
     @aspect_ratio: .65;  // = width/height
+    @toggle_speed:.2s;
     @switch_border: 5px;
 
     @color_on: hsl(0, 100%, 50%);
@@ -24,45 +25,45 @@
     * { margin:0px; padding: 0px; }
 
     > input {
+        position: absolute;
+
         /* hide check box because we are not stlying it.
         user can still click on label to check/uncheck */
-
-        position: absolute;
-        // margin-left: -9999px; // coment out to show checkbox
-        // visibility: hidden;   // coment out to show checkbox
+        margin-left: -9999px; // coment out to show checkbox
+        visibility: hidden;   // coment out to show checkbox
     }
 
     > input + label {
-        display: block;
-        position: relative;
-        cursor: pointer;
-        outline: none;
-        /* user-select: The text of the element and sub-elements will
-                        not be able to be selected */
-        -webkit-user-select: none; /* Chrome all / Safari all */
-    }
-
-    > input.switch-style-round + label {
-        // label is the switch body, it bg-color is the on color;
+        // label is the switch body;
 
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
 
+        display: block;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+        // above is to ensure that text in label can nolonger be selected
+    }
+
+    > input.switch-style-round + label {
+        // label is the switch body, it's bg-color is the on color;
         width: @width;
         height: @height;
-        background-color: @color_on;
-
-        border: @switch_border solid @color_switch_border;
-        -webkit-border-radius: @roundness;
-
         overflow: hidden;
         top: 0px;
         left: 0px;
+        background-color: @color_on;
+        border: @switch_border solid @color_switch_border;
+        -webkit-border-radius: @roundness;
     }
 
-    > input.switch-style-round + label:before,
-    > input.switch-style-round + label:after {
+    > input.switch-style-round + label::before,
+    > input.switch-style-round + label::after {
+        // ::before is the slideing pannel under the toggle, it has the off color;
+        // ::after is the toggle knob
 
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -74,7 +75,8 @@
         -webkit-border-radius: @toggle_roundness;
     }
 
-    > input.switch-style-round + label:before {
+    > input.switch-style-round + label::before {
+        // ::before is the slideing pannel under the toggle, it has the off color;
         top:0px;
         left: 0px;
         /* right: 2px; */
@@ -82,17 +84,17 @@
         width: @width;
         height: @toggle_size;
         background-color: @color_off;
-        -webkit-transition: background 0.4s ease;
-        transition: margin 0.4s;
+        -webkit-transition: margin @toggle_speed;
     }
 
-    > input.switch-style-round + label:after {
+    > input.switch-style-round + label::after {
+        // ::after is the toggle knob
         top: 0px;
         left: 0px;
         width: @toggle_size;
         height: @toggle_size;
         background-color: @color_toggle;
-        transition: margin 0.4s;
+        -webkit-transition: margin @toggle_speed;
     }
 
     > input.switch-style-round:checked + label:before {
