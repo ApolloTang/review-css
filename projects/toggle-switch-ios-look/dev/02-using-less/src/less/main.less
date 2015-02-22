@@ -1,18 +1,24 @@
+@roundness: 30px;
+@color_on: red;
+@color_off: blue;
+@color_toggle: hsl(0, 0, 100%);
+
+/* reset margin */
 * {margin:0px; padding: 0px;}
 
 .wrapper {
     outline: red solid 1px;
     padding: 10px;
 }
-/* set up the element to style */
+
 
 .switch {
     /* hide check box because we are not stlying it.
     user can still click on label to check/uncheck */
 
     position: absolute;
-    margin-left: -10px;
-    visibility: visible;
+    // margin-left: -9999px; // coment out to show checkbox
+    // visibility: hidden;   // coment out to show checkbox
         }
         .switch + label {
             display: block;
@@ -31,14 +37,14 @@
             -moz-box-sizing: border-box;
             box-sizing: border-box;
 
-            -webkit-border-radius: 30px;
+            -webkit-border-radius: @roundness;
             border:5px solid black;
             overflow:hidden;
             top: 0px;
             left: 0px;
             width: 120px;
             height: 60px;
-            background-color: red
+            background-color: @color_on;
         }
         input.switch-style-round + label:before, input.switch-style-round + label:after {
 
@@ -56,7 +62,7 @@
             /* bottom: 2px; */
             width: 100px;
             height: 50px;
-            background-color: blue;
+            background-color: @color_off;
             -webkit-transition: background 0.4s ease;
             transition: margin 0.4s;
         }
@@ -65,7 +71,7 @@
             left: 3px;
             width: 40px;
             height: 40px;
-            background-color: green;
+            background-color: @color_toggle;
             transition: margin 0.4s;
         }
         input.switch-style-round:checked + label:before {
