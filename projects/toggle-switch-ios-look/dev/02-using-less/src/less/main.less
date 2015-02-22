@@ -1,18 +1,16 @@
 
 .switch{
 
-    outline: red solid 1px;
-    padding: 10px;
-
     @width: 100px;
-    @aspect_ratio: .65;  // = width/height
+    @aspect_ratio: .55;  // = width/height
     @toggle_speed:.2s;
     @switch_border: 1px;
 
-    @color_on: hsl(0, 100%, 50%);
-    @color_off: hsl(120, 100%, 50%);
-    @color_toggle: hsl(240, 100%, 50%);
+    @color_on: hsl(0, 98%, 68%);
+    @color_off: hsl(120, 76%, 74%);
+    @color_toggle: hsl(0, 100%, 100%);
     @color_switch_border: hsl(0, 10%, 50%);
+    @color_toggle_border: hsl(0, 0%, 70%);
 
     @height: @width * @aspect_ratio;
     @slide_distance: @height - @width;
@@ -94,7 +92,8 @@
         width: @toggle_size;
         height: @toggle_size;
         background-color: @color_toggle;
-        border: 1px solid @color_switch_border;
+        border: 1px solid @color_toggle_border;
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         -webkit-transition: margin @toggle_speed;
     }
 
