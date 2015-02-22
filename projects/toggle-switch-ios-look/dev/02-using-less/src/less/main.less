@@ -4,14 +4,24 @@
     outline: red solid 1px;
     padding: 10px;
 
-    @roundness: 30px;
-    @color_on: red;
-    @color_off: blue;
-    @color_toggle: hsl(0, 0, 100%);
+    @width: 100px;
+    @aspect_ratio: .65;  // = width/height
+    @switch_border: 5px;
 
+    @color_on: hsl(0, 100%, 50%);
+    @color_off: hsl(120, 100%, 50%);
+    @color_toggle: hsl(240, 100%, 50%);
+    @color_switch_border: hsl(0, 10%, 50%);
+
+    @height: @width * @aspect_ratio;
+    @slide_distance: @height - @width;
+    @toggle_size: @height - @switch_border*2;
+
+    @roundness: @height/2;
+    @toggle_roundness: @toggle_size/2;
 
     /* reset margin */
-    * {margin:0px; padding: 0px;}
+    * { margin:0px; padding: 0px; }
 
     > input {
         /* hide check box because we are not stlying it.
@@ -27,25 +37,28 @@
         position: relative;
         cursor: pointer;
         outline: none;
-        /* user-select:
-        The text of the element and sub-elements will not be able to be selected */
+        /* user-select: The text of the element and sub-elements will
+                        not be able to be selected */
         -webkit-user-select: none; /* Chrome all / Safari all */
     }
 
     > input.switch-style-round + label {
+        // label is the switch body, it bg-color is the on color;
 
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
 
+        width: @width;
+        height: @height;
+        background-color: @color_on;
+
+        border: @switch_border solid @color_switch_border;
         -webkit-border-radius: @roundness;
-        border:5px solid black;
-        overflow:hidden;
+
+        overflow: hidden;
         top: 0px;
         left: 0px;
-        width: 120px;
-        height: 60px;
-        background-color: @color_on;
     }
 
     > input.switch-style-round + label:before,
@@ -54,39 +67,40 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+
         display: block;
         position: absolute;
         content: "";
+        -webkit-border-radius: @toggle_roundness;
     }
 
     > input.switch-style-round + label:before {
-        top:2px;
-        left: 2px;
+        top:0px;
+        left: 0px;
         /* right: 2px; */
         /* bottom: 2px; */
-        width: 100px;
-        height: 50px;
+        width: @width;
+        height: @toggle_size;
         background-color: @color_off;
         -webkit-transition: background 0.4s ease;
         transition: margin 0.4s;
     }
 
     > input.switch-style-round + label:after {
-        top: 20px;
-        left: 3px;
-        width: 40px;
-        height: 40px;
+        top: 0px;
+        left: 0px;
+        width: @toggle_size;
+        height: @toggle_size;
         background-color: @color_toggle;
         transition: margin 0.4s;
     }
 
     > input.switch-style-round:checked + label:before {
-        background-color: #000099;
-        margin-left: 60px;
+        margin-left: -@slide_distance;
     }
 
     > input.switch-style-round:checked + label:after {
-        margin-left: 60px;
+        margin-left: -@slide_distance;
     }
 
 }
