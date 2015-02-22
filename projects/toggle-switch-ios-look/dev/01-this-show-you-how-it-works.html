@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>toggle-switch</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+        * {margin:0px; padding: 0px;}
+
+        .wrapper {
+            outline: red solid 1px;
+            padding: 10px;
+        }
+        /* set up the element to style */
+
+        .switch {
+            /* hide check box because we are not stlying it.
+               user can still click on label to check/uncheck */
+
+            position: absolute;
+            margin-left: -10px;
+            visibility: visible;
+        }
+        .switch + label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            /* user-select:
+               The text of the element and sub-elements will not be able to be selected */
+            -webkit-user-select: none; /* Chrome all / Safari all */
+        }
+
+
+input.switch-style-round + label {
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-border-radius: 30px;
+  border:5px solid black;
+    overflow:hidden;
+  top: 0px;
+  left: 0px;
+  width: 120px;
+  height: 60px;
+  background-color: red
+}
+input.switch-style-round + label:before, input.switch-style-round + label:after {
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  content: "";
+}
+input.switch-style-round + label:before {
+  top:2px;
+  left: 2px;
+  /* right: 2px; */
+  /* bottom: 2px; */
+  width: 100px;
+  height: 50px;
+  background-color: blue;
+  -webkit-transition: background 0.4s ease;
+  transition: margin 0.4s;
+}
+input.switch-style-round + label:after {
+  top: 20px;
+  left: 3px;
+  width: 40px;
+  height: 40px;
+  background-color: green;
+  transition: margin 0.4s;
+}
+input.switch-style-round:checked + label:before {
+  background-color: #000099;
+  margin-left: 60px;
+}
+input.switch-style-round:checked + label:after {
+  margin-left: 60px;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <input id="toggle-1" class="switch switch-style-round" type="checkbox">
+        <label for="toggle-1">label 1</label>
+    </div>
+
+    <script src="http://localhost:8001/js/lib/jquery-1.11.0.js"></script>
+    <script>
+        // js here
+    </script>
+</body>
+
+</html>
