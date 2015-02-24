@@ -1,0 +1,61 @@
+
+
+
+
+
+1em is equal to the current font-size of the element in question
+
+If you haven't set font size anywhere on the page, then it would
+be the browser default, which is probably 16px.  So by default:
+
+    1em = 16px.
+
+    If you were to go and set a font-size of 20px on your body
+    then 1em = 20px.
+
+Every em value is relative to its parents value -- they cascade.
+
+    If you are using em's as a straight substitution for pixel
+    values, this can cause problems. For example
+
+        You might set both your "p" and "li" font-sizes to be
+        1.2em. Looks great for you today, but tomorrow some content
+        is published to the site that has a paragraph inside
+        a list item. Those two values will cascade (1.2 x 1.2)
+        and that list item will be bigger in font-size than
+        any of the others. No way around that, other than
+        removing the tag.
+
+    ref: http://css-tricks.com/css-font-size/
+
+-----------------------------------------------------------------
+
+The css rule:
+
+    body {font-size:62.5%}
+
+will reset 1em = 10px (becasue .625 times 16px = 10px)
+
+
+    #navigation   {font-size:1em}     // this is 10px
+    #main_content {font-size:1.2em}   // this is 12px
+    #side_bar     {font-size:1em}     // this is 10px
+    #footer       {font-size:0.9em}   // this is 9px
+
+Different Browser vender set Heading tag at different size,
+so you need to declare your Heading font-size in #main_content
+and note that the result font size multiple of #main_content:
+
+    H1 {font-size:2em}     /* displayed at 24px (    2x12) */
+    H2 {font-size:1.5em}   /* displayed at 18px (  1.5x12) */
+    H3 {font-size:1.25em}  /* displayed at 15px ( 1.25x12) */
+    H4 {font-size:1em}     /* displayed at 12px (    1x12) */
+
+A similar treatment needs to be done on forms and tables
+
+    INPUT, SELECT, TH, TD { font-size:1em }
+
+Carefull!! when <li> is contain inside another <li> it get smaller.
+
+Most browser's "medium" text is set to 16px, by default.
+

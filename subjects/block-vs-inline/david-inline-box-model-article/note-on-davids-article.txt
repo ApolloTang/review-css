@@ -1,0 +1,63 @@
+Non-replaced inline elements
+
+Inline non-replaced elements are treated quite differently.
+
+The content width of an inline non-replaced element is
+the width required by its content -- which is affected by font properties:
+        "word-spacing" and "letter-spacing", both which
+        are affected by whether "text-align" is justify or not.
+
+The width property has no effect on inline non-replaced element.
+
+The horizontal margin, border, and padding are placed:
+    to the left of the beginning of the inline element and
+    to the right of the end,
+    have no effect at line breaks.
+
+Heights of inline elements are more complicated:
+
+    • For the purposes of the box properties, the font height is used.
+    • The vertical "padding" and "border" are placed outside the font edge.
+    • If an inline element is broken over lines, they occur on
+        every line. (However, they have no effect
+        on the layout of the inline elements. [??] )
+    • Vertical "margin" properties have no effect at all -- as the vertical
+      box properties have no effect on the layout of the elements.
+
+
+Line-height
+-----------
+
+The "line-height" property specifies the logical height of an inline element.
+
+    This is the height used in the vertical alignment of inline elements
+    and the construction of line boxes.
+
+    [NOTE: Should it instead be said that (line-height - font-size) is the leading?
+        This makes a difference when multiple fonts are mixed because
+        the first font does not have sufficient characters.
+        I think it would be far superior since it would prevent potential overlap
+        or narrowing of spaces between lines because of one or two glyphs
+        But is it too complex? It also makes a difference when the
+        font height is not the font-size.]
+
+    The css2 line-height property takes 5 possible of values
+
+        normal, <length>, <number>, <percentage>, inherit
+
+        for <length> and <percentage> values will result in computed
+        values that are lengths adopted by as line-height of decendences.
+        Therefore, they are dangerous to use.
+
+        <number> and normal values have computed values adopted
+        by decendences (inherit) as scaling factors to be multiplied by decendence'
+        font-size. They are therefore safe.
+
+        [NOTE: Should normal be considered to be a computed value
+        so that it can vary by font, using information provided in the
+        font metrics?] [NOTE: Should percentages and scaling factors
+        be based on the computed font size, the actual font size (of
+        the first font in the font set or a combination?), or the actual
+        max-ascent to max-descent (of the first...?), i.e., the font height?]
+
+

@@ -1,0 +1,82 @@
+
+
+::: Required values for font declaration:
+
+    font: <font-size>[/<line-height>] <font-family>
+
+    eg:
+        font: 100% sans-serif
+
+    [!] <font-Size> and <family-family> are required and must be in that
+        order.
+    [!] Additional keywords must come before the required values
+
+
+    eg:
+        font: bold italic 100% sans-serif;
+        font: italic small-caps 125% Georgia, serif;
+        font: italic bold small-caps 200% Helvetica, Arial, sans-serif;
+
+    Order of values before required values is not important.
+
+    <line-height> is optional as part of required values.  But if you do
+    include it, its placement is not. You must immediately follow the
+    font's size with a forward slash and the line-height value. For
+    example:
+
+        font: 100%/2.5 Helvetica, sans-serif;
+
+::: United and unitless line height declaration
+
+    In general you shouldn't declare line-height with unit.
+
+    If you declare line-height with unit, the computed result value
+    for line-height will be adopted as the line-height of its
+    descendants. For example:
+
+
+        ul {font-size: 15px; line-height: 1em;}
+        li {font-size: 10px;}
+        small {font-size: 80%;}
+
+        <ul>
+            <li>
+                I’m a list item with <small>small text</small>.
+            </li
+        </ul>
+
+    The computed line-height value for <ul> is 15px.  This computed value
+    of 15px will passsed on to the descendent elements. To wit, <li> and
+    <small> elements will inherit a line-height value of 15px,
+    as if someone has written:
+
+        ul {font-size: 15px; line-height: 1em;}
+        li {font-size: 10px; line-height: 15px;}
+        small {font-size: 80%; line-height: 15px;}
+
+    Now, if you had declared line-height without unit:
+
+
+        ul {font-size: 15px; line-height: 1;}
+        li {font-size: 10px;}
+        small {font-size: 80%;}
+        <ul>
+            <li>
+                I’m a list item with <small>small text</small>.
+            </li>
+        </ul>
+
+    The unit-less value of line-height will passed down to decendent elemetnsas
+    a scaling factor -- not the computed result.
+
+    Thus, in the above example, <li> and <small> will used the
+    scalling factor to compute their respective line-height.
+    The end result is exactly the same as if I’d written:
+
+        ul {font-size: 15px; line-height: 1;}
+        li {font-size: 10px; line-height: 10px;}
+        small {font-size: 80%; line-height: 8px;}
+
+    Thus it is strongly recommended that you use unitless number
+    when setting a line-height on <html> or <body> elements, or
+    on any element that is going to have descendant elements.
