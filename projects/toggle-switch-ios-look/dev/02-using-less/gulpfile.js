@@ -18,10 +18,15 @@ var outputDir = 'builds/development';
 
 console.log ('argv: ', argv);
 
+// var env = process.env.NODE_ENV || 'development';
 var env = argv.env || 'development';
 var port = argv.p || '9999';
 
+// automatically set livereload port for additional instance
+var livereload_port = (port !== '9999') ? (+port + 40000) + "" : '35729';
+
 console.log('env: ', env);
+console.log('livereload_port: ', livereload_port);
 
 var doneInit = false;
 
@@ -70,7 +75,16 @@ gulp.task('js', ['before'], function(){
         debug: env === 'development' // only include source map if NODE_ENV is set 'development'
     })
     .bundle()
-    .pipe(vinylSource('app.js'))
+    .pipe(vinylSource('app.js')) // <-
+                    // Gulp work w vinyl-source-obj, it
+                    // does not undestand browserify bundle directly.
+                    // Thus, need vinyl-source-stream plugin to translate
+                    // browserify output to what gulp stream understand
+                    //       @Parameter: is the desire name
+    // .pipe(uglify())          // << error because uglify does not support streaming.
+                                //      Uglify require the entire content of the output to do its work.
+                                //      Thus, we need to use gulp-streamify. Gulp-streamify
+                                //      save entire stream output in a buffer bf calling uglify plugin.
     .pipe(
         gulpif( env === 'production', streamify(uglify())) // only uglify on production enviroment
      )
@@ -88,9 +102,11 @@ gulp.task('sass', ['before'], function(){
     .pipe(sourcemaps.init())   // <--- sourcemaps initialize
     .pipe(sass({errLogToConsole: true}))
     .pipe( gulpif( config.writeSrcMap, sourcemaps.write()))
+    // .pipe( gulpif( false, sourcemaps.write()))
     .pipe(gulp.dest(outputDir))
     .pipe(connect.reload());
 });
+
 
 
 gulp.task('less', ['before'],  function(){
@@ -107,6 +123,11 @@ gulp.task('less', ['before'],  function(){
         console.log(err);
         this.emit('end');
     })
+    // NOTE: the following work too
+    // .pipe(less().on('error', function(err){
+    //     console.log(err);
+    //     this.emit('end');
+    // }))
     .pipe( gulpif( config.writeSrcMap, sourcemaps.write()))
     .pipe(gulp.dest(outputDir))
     .pipe(connect.reload());
@@ -120,15 +141,18 @@ gulp.task('watch', ['before'], function(){
 })
 
 gulp.task('connect', ['before'], function(){
-    console.log ('port: ', port);
-    connect.server({
+connect.server({
         root: outputDir,
-        livereload: true,
-        port: port
+        // open: { browser: 'Google Chrome'}
+        // Option open does not work in gulp-connect v 2.*. Please read "readme" https://github.com/AveVlad/gulp-connect}
+        port: port,
+        // livereload: true,
+        livereload: {port : livereload_port}
     });
 });
 
+
+
 // gulp.task('default', ['js', 'jade', 'sass', 'watch', 'connect']);
 gulp.task('default', ['js', 'jade', 'less', 'watch', 'connect']);
-
 
