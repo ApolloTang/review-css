@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>inner dim w top/left/right/bottom</title>
+<style>
+
+
+ #outter {
+    /* both absolute and relative will work */
+    position: absolute;
+    /* position: relative; */
+    width: 200px; height: 200px;
+
+    outline: 5px red solid;
+ }
+ #inner {
+    /*
+       top, bottom, left, and right acting somewhat like margins of
+       inner box ( or padding of outter box, depend on your perspective ).
+       You don't need to set height or width for inner box.
+
+           innerDim = outterDim - (bottom/top | left/right).
+
+       If height of parents cascade down to inner box, then set
+
+            height : auto
+
+       Only works on absolute positioning.
+    */
+     margin 100px;
+     height: auto;
+     position: absolute;
+     top: 20px; bottom: 20px;
+     left: 40px; right: 40px;
+
+     outline: 5px blue solid;
+ }
+
+</style>
+</head>
+<body>
+    <div id="outter">
+        <div id="inner" > </div>
+    </div>
+</body>
+</html>
