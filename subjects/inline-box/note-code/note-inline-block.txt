@@ -1,0 +1,18 @@
+
+An inline-blockelement relates to other elements and content
+as an inline box.
+    The bottom of the inline-block element will rest on the baseline
+    of the text line by default and will not line-break within itself
+
+Inside the inline-blockelement, the content is formatted as though
+the element were block-level.
+    The properties width and height apply to it, as they do to
+    any block-level or inline replaced element, and those
+    properties will increase the height of the line if they are
+    taller than the surrounding content.
+
+Important different between display:inline and display:inline-block
+    inline element ignore "width" and "text-align" properties, but
+    inline-block will hornors both.
+
+[Warning]  white-space btw inline-block will affect the rendering.

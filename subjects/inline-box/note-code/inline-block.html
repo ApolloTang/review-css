@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>inline-block</title>
+<style>
+ul#display-inline-block-example,  ul#display-inline-block-example li {
+	/* Setting a common base */
+		margin: 0;
+		padding: 0;
+}
+ul#display-inline-block-example {
+	width: 400px;  /* you will see the problem cause by spaces if you change the width to 300*/
+	border: 1px solid #000;
+}
+ul#display-inline-block-example li {
+	display: inline-block;
+	width: 100px;
+	min-height: 100px;
+	background: #ccc;
+	vertical-align: top;
+	
+	/* For IE 7 */
+		zoom: 1;
+		*display: inline;
+}
+</style>
+</head>
+<body>
+<p>Space or line break between &lt;li&gt; element will show up in the rendering. You will see the problem cause by spaces or line-break if you change the width for ul#display-inline-block-example to  300px.</p>
+<p>See   <a href="http://robertnyman.com/2010/02/24/css-display-inline-block-why-it-rocks-and-why-it-sucks/">http://robertnyman.com/2010/02/24/css-display-inline-block-why-it-rocks-and-why-it-sucks/</a></p> 
+
+	<ul id="display-inline-block-example">
+		<li>Item one (no space after this item)</li><li>Item two Dolor scelerisque mattis. Dapibus, sed a, lorem enim in adipiscing integer ac augue amet elementum? Nunc odio dignissim sed, lectus ridiculus in hac? Cras magna magnis duis elit auctor odio nunc duis in, lorem proin velit</li>
+		<li>Item three (there is a line break before this item</li>
+</ul>
+</body>
+</html>
