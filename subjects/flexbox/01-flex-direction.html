@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>01-flex directoin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+        /*=======
+        clear fix  see http://nicolasgallagher.com/micro-clearfix-hack/
+        ========= */
+        /* For modern browsers */
+        .cf:before, .cf:after { content: ""; display: table; } .cf:after { clear: both; }
+        /* For IE 6/7 (trigger hasLayout) */
+        .cf { zoom: 1; }
+
+        .container1 {
+            outline: 1px solid red;
+            display: flex;
+            flex-direction: column;
+        }
+        .container2 {
+            outline: 1px solid red;
+            display: flex;
+            flex-direction: row;
+        }
+        .b  { }
+        .b1 {
+            background-color: blue;
+            width: 30px; height: 50px;
+        }
+        .b2 {
+            background-color: green;
+            width: 40px; height: 60px;
+        }
+        .b3 {
+            background-color: yellow;
+            width: 80px; height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>https://css-tricks.com/snippets/css/a-guide-to-flexbox/</p>
+    <div class="container1">
+        <div class="b1" > 1 </div>
+        <div class="b2" > 2 </div>
+        <div class="b3" > 3 </div>
+    </div>
+<div class="container2">
+        <div class="b1" > 1 </div>
+        <div class="b2" > 2 </div>
+        <div class="b3" > 3 </div>
+    </div>
+
+
+    <script src="http://localhost:8001/js/lib/jquery-1.11.0.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
