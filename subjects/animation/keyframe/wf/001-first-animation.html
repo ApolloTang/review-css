@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>001-first-animation</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+
+    /* set up 2 box centred them using vertical-align tick */
+
+        * {margin:0; padding:0;}
+        .wrap {
+            display: block;
+            border: 5px solid blue;
+            height: 200px; width: 200px;
+            text-align: center;
+            font-size: 200px;
+        }
+        .el {
+            background-color: red;
+            display: inline-block;
+            vertical-align: middle;
+            width: 20px; height: 20px;
+        }
+
+    /* animation start here */
+
+        .el {
+            -webkit-animation: myAnimation 5s infinite;
+        }
+        @-webkit-keyframes myAnimation {
+             0% { transform: scale(1.0); opacity: 1; }
+            20% { transform: scale(2.0); opacity: 0.2; }
+            40% { transform: scale(3.0); opacity: 1; }
+            60% { transform: scale(4.0); opacity: 0.2; }
+            80% { transform: scale(5.0); opacity: 1; }
+           100% { transform: scale(6.0); opacity: 0.2; }
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="el"></div></div>
+</div>
+
+</body>
+
+</html>
