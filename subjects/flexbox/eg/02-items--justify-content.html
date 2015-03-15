@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>01-equal-margin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+    /* reset */
+        * { margin: 0; padding: 0; list-style: none; }
+
+    /* appearence */
+        .flex-container, .flex-item { box-sizing: border-box }
+        .flex-container { background-color: lavender }
+        .flex-item { border: 1px solid red; }
+
+        .flex-container { /* parent */
+
+            /* We first create a flex layout context for various vendor*/
+                display: flex;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+
+            /* Then we define the flow direction and if we allow the items to wrap */
+            flex-flow: row wrap;
+            /* the above is short hand for:
+                flex-direction: row;
+                flex-wrap: wrap;
+             */
+
+            /* Then we define how is distributed the remaining space */
+                /* justify-content: flex-start; */
+                /* justify-content: flex-end; */
+                /* justify-content: center; */
+                /* justify-content: space-between; */
+                justify-content: space-around;
+        }
+        .flex-item {
+            /* item */
+            width: 50px; height: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="flex-container">
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+        <li class="flex-item"></li>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>01-equal-margin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+        .child {background-color: pink;}
+        .parent {background-color: lavender;}
+        .parent {
+            display: flex;
+            height: 300px;
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="parent">
+        <div class="child"> 1 </div>
+        <div class="child"> 2 </div>
+        <div class="child"> 3 </div>
+    </div>
+
+</body>
+
+</html>
