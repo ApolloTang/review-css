@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>000-flex-basis-is-zero</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+
+        .parent {
+            height: 100px;
+            background-color: lavender;
+        }
+        .items {
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        .parent {
+            display: -webkit-flex;
+        }
+        .items1 {
+            width: 100px;  /* <--- preset width */
+            -webkit-flex-grow: 0;
+            -webkit-flex-shrink: 1;
+            -webkit-flex-basis: auto;  /* <----  value of zero will ignore preset width */
+        }
+        .items2 {
+            width: 100px;  /* <--- preset width being ignored */
+            -webkit-flex-grow: 1;
+            -webkit-flex-shrink: 0;
+            -webkit-flex-basis: auto;  /* <----  value of zero will ignore preset width */
+        }
+        .items3 {
+            width: 100px;  /* <--- preset width */
+            -webkit-flex-grow: 0;
+            -webkit-flex-shrink: 1;
+            -webkit-flex-basis: 0;  /* <----  value of zero will ignore preset width */
+        }
+        .items4 {
+            width: 100px;  /* <--- preset width being ignored */
+            -webkit-flex-grow: 1;
+            -webkit-flex-shrink: 0;
+            -webkit-flex-basis: 0;  /* <----  value of zero will ignore preset width */
+        }
+    </style>
+</head>
+
+<body>
+    <p> flex-basis: auto;  </p>
+    <div class="parent">
+        <div class="items items1" > 1 </div>
+        <div class="items items1" > 2 </div>
+        <div class="items items1" > 3 </div>
+        <div class="items items1" > 4 </div>
+        <div class="items items1" > 5 </div>
+    </div>
+    <div class="parent">
+        <div class="items items2" > 1 </div>
+        <div class="items items2" > 2 </div>
+        <div class="items items2" > 3 </div>
+        <div class="items items2" > 4 </div>
+        <div class="items items2" > 5 </div>
+    </div>
+
+    <p> flex-basis:0 will ignore the preset width of items </p>
+    <div class="parent">
+        <div class="items items3" > 1 </div>
+        <div class="items items3" > 2 </div>
+        <div class="items items3" > 3 </div>
+        <div class="items items3" > 4 </div>
+        <div class="items items3" > 5 </div>
+    </div>
+    <div class="parent">
+        <div class="items items4" > 1 </div>
+        <div class="items items4" > 2 </div>
+        <div class="items items4" > 3 </div>
+        <div class="items items4" > 4 </div>
+        <div class="items items4" > 5 </div>
+    </div>
+</body>
+
+</html>
