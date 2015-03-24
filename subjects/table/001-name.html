@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>??Title??</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:8001/css/lib/normalize-2.1.2.css">
+    <style media="screen" type="text/css">
+        * {margin:0; padding:0;}
+        body { background: #ccc; }
+        .wrap { width: 100px; margin: 0 auto; background: white;
+            overflow-x: scroll;
+        }
+        table {
+            table-layout: fixed;
+            border: 2px solid red;
+        }
+        td {
+            width: 100px;
+            border: 1px solid green;
+            overflow-x: scroll;
+        }
+        col {
+        }
+        col.c2 {
+            width: 30px;
+            background: red;
+        }
+        /* th.c3 { */
+        /*     border: 1px solid green; */
+        /*     color: red; */
+        /* } */
+        /* td.c3 { */
+        /*     border: 1px solid green; */
+        /*     background-color:yellow; */
+        /*     color: red; */
+        /*     width: 20px; */
+        /* } */
+        /* td.c4 { */
+        /*     border: 1px solid green; */
+        /*     background-color:yellow; */
+        /*     color: red; */
+        /*     width: 20px; */
+        /* } */
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <table class="many-cells">
+            <col class="c1"/>
+            <col class="c2"/>
+            <col class="c3"/>
+            <col class="c4"/>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+
+            <thead>
+                <th class="c1">1</th>
+                <th class="c2">2</th>
+                <th class="c3">3</th>
+                <th class="c4">4</th>
+                <th >5</th>
+                <th >6</th>
+                <th >7</th>
+                <th >8</th>
+                <th >9</th>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td class="c1">a</td>
+                <td class="c2">a</td>
+                <td class="c3">a</td>
+                <td class="c4">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td class="c2"></td>
+                <td class="c3">long longlonglong longlong </td>
+                <td class="c4">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+                <td class="">a</td>
+            </tr>
+            <tbody>
+        </table>
+    </div>
+
+    <canvas id="canvas" width="700" height="500"></canvas>
+
+    <script src="http://localhost:8001/js/lib/jquery-1.11.0.js"></script>
+    <script>
+        // js here
+    </script>
+</body>
+
+</html>
