@@ -1,8 +1,8 @@
 
 .toggle-switch {
 
-    @width: 400px;
-    @aspect_ratio: .21;  // = height/width
+    @width: 60px;
+    @aspect_ratio: .51;  // = height/width
     @toggle_speed:.2s;
     @switch_border: 1px;
 
@@ -12,7 +12,7 @@
     @color_white: hsl(0, 0%, 96%);
 
     @color_toggle: hsl(0, 100%, 100%);
-    @color_switch_border: @color_green;
+    @color_switch_border: hsl(0, 10%, 50%);
     @color_toggle_border: hsl(0, 0%, 70%);
 
     @height: @width * @aspect_ratio;
@@ -28,7 +28,7 @@
     // set the following for color options :
     @color_checked_red   : @color_red;
     @color_checked_green : @color_green;
-    @color_unchecked : @color_green;
+    @color_unchecked : @color_white;
 
     @roundness: @height/2;
     @toggle_roundness: @toggle_size/2;
