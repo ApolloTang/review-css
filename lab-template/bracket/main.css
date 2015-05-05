@@ -1,0 +1,20 @@
+/* line 4, /Users/apollo/Desktop/lab-bracket/style/_demo.scss */
+.ef-creative-module .class1 {
+  border: 3px green solid; }
+/* line 8, /Users/apollo/Desktop/lab-bracket/style/_demo.scss */
+.ef-creative-module .class1:hover {
+  background: red; }
+/* line 12, /Users/apollo/Desktop/lab-bracket/style/_demo.scss */
+.ef-creative-module .class2 {
+  border: 3px green solid; }
+  /* line 14, /Users/apollo/Desktop/lab-bracket/style/_demo.scss */
+  .ef-creative-module .class2:hover {
+    background: red; }
+/* line 22, /Users/apollo/Desktop/lab-bracket/style/_demo.scss */
+.ef-creative-module ul li {
+  color: red; }
+  /* line 24, /Users/apollo/Desktop/lab-bracket/style/_demo.scss */
+  .ef-creative-module ul li ul {
+    border: 3px green solid; }
+
+/*# sourceMappingURL=main.css.map */
