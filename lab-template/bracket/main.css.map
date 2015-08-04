@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "main.css",
+  "sources": [
+    "main.scss",
+    "style/_variable.scss",
+    "style/_demo.scss"
+  ],
+  "sourcesContent": [],
+  "mappings": ";AEGA,AAAoB;EACZ,AAAQ;;AAGhB,AAAoB,AAAO;EACnB,AAAY;;AAGpB,AAAoB;EACX,AAAQ;;EACjB,AAAoB,AAAO;IACd,AAAY;;AAOzB,AAAoB,AAAG;EACX,AAAO;;EACnB,AAAoB,AAAG,AAAG;IACV,AAAQ",
+  "names": []
+}

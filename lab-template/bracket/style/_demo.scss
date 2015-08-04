@@ -1,0 +1,33 @@
+
+
+.ef-creative-module {
+    .class1 {
+        border: 3px green solid;
+    }
+
+    .class1:hover {
+        background: red;
+    }
+
+    .class2 {
+         border: 3px green solid;
+         &:hover {
+             background: red;
+         }
+    }
+
+
+
+    ul {
+        li {
+            color: red;
+            ul {
+                border: 3px green solid;
+                li {  }
+            }
+        }
+    }
+
+
+}
+

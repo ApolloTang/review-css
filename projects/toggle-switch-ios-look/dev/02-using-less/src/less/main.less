@@ -1,20 +1,34 @@
 
-.switch{
+.toggle-switch {
 
-    @width: 100px;
-    @aspect_ratio: .55;  // = width/height
+    @width: 60px;
+    @aspect_ratio: .51;  // = height/width
     @toggle_speed:.2s;
     @switch_border: 1px;
 
-    @color_on: hsl(0, 98%, 68%);
-    @color_off: hsl(120, 76%, 74%);
+
+    @color_red: hsl(0, 76%, 74%);
+    @color_green: hsl(120, 76%, 74%);
+    @color_white: hsl(0, 0%, 96%);
+
     @color_toggle: hsl(0, 100%, 100%);
     @color_switch_border: hsl(0, 10%, 50%);
     @color_toggle_border: hsl(0, 0%, 70%);
 
     @height: @width * @aspect_ratio;
-    @slide_distance: @height - @width;
+    @slide_distance: @width - @height;
     @toggle_size: @height - @switch_border*2;
+    @position_left : 0px;
+    @position_right : @slide_distance;
+
+    // set the following for position options :
+    @position_checked :  @position_right;
+    @position_unchecked : @position_left;
+
+    // set the following for color options :
+    @color_checked_red   : @color_red;
+    @color_checked_green : @color_green;
+    @color_unchecked : @color_white;
 
     @roundness: @height/2;
     @toggle_roundness: @toggle_size/2;
@@ -22,87 +36,97 @@
     /* reset margin */
     * { margin:0px; padding: 0px; }
 
+    width: @width;
+    float: none;
+    overflow: hidden;
+
     > input {
         position: absolute;
 
         /* hide check box because we are not stlying it.
         user can still click on label to check/uncheck */
-        margin-left: -9999px; // coment out to show checkbox
-        visibility: hidden;   // coment out to show checkbox
+        margin-left: -9999px; // comment out this to show checkbox
+        // margin-left: -20px; // uncomment to show checkbox
+        visibility: hidden;   // coment out this to show checkbox
     }
 
     > input + label {
         // label is the switch body;
 
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
 
         display: block;
         position: relative;
         cursor: pointer;
         outline: none;
-        -webkit-user-select: none;
+        user-select: none;
         // above is to ensure that text in label can nolonger be selected
     }
 
-    > input.switch-style-round + label {
-        // label is the switch body, it's bg-color is the on color;
+    > input.toggle-switch-style-round + label {
+        // label is the switch body, it's bg-color is the checked color;
         width: @width;
         height: @height;
         overflow: hidden;
         top: 0px;
         left: 0px;
-        background-color: @color_on;
+        background-color: @color_checked_green;
         border: @switch_border solid @color_switch_border;
-        -webkit-border-radius: @roundness;
+        border-radius: @roundness;
     }
 
-    > input.switch-style-round + label::before,
-    > input.switch-style-round + label::after {
-        // ::before is the slideing pannel under the toggle, it has the off color;
+    > input.toggle-switch-style-round.toggle-switch-style-red + label {
+        background-color: @color_checked_red;
+    }
+
+    > input.toggle-switch-style-round + label::before,
+    > input.toggle-switch-style-round + label::after {
+        // ::before is the slideing pannel under the toggle, it has the unchecked color;
         // ::after is the toggle knob
 
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
 
         display: block;
         position: absolute;
         content: "";
-        -webkit-border-radius: @toggle_roundness;
     }
 
-    > input.switch-style-round + label::before {
-        // ::before is the slideing pannel under the toggle, it has the off color;
-        top:0px;
-        left: 0px;
+    > input.toggle-switch-style-round + label::before {
+        // ::before is the slideing pannel under the toggle, it has the unchecked color;
+        top:-1px;
+        left: 3px;
+        margin-left: @position_unchecked;
         /* right: 2px; */
         /* bottom: 2px; */
         width: @width;
-        height: @toggle_size;
-        background-color: @color_off;
-        -webkit-transition: margin @toggle_speed;
+        height: @toggle_size+2;
+        background-color: @color_unchecked;
+        transition: margin @toggle_speed;
+        border-radius: @toggle_roundness;
     }
 
-    > input.switch-style-round + label::after {
+    > input.toggle-switch-style-round + label::after {
         // ::after is the toggle knob
         top: 0px;
         left: 0px;
+        margin-left: @position_unchecked;
         width: @toggle_size;
         height: @toggle_size;
         background-color: @color_toggle;
         border: 1px solid @color_toggle_border;
-        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        -webkit-transition: margin @toggle_speed;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transition: margin @toggle_speed;
+        border-radius: @toggle_roundness;
     }
 
-    > input.switch-style-round:checked + label:before {
-        margin-left: -@slide_distance;
+    > input.toggle-switch-style-round:checked + label:before {
+        margin-left: @position_checked;
     }
 
-    > input.switch-style-round:checked + label:after {
-        margin-left: -@slide_distance;
+    > input.toggle-switch-style-round:checked + label:after {
+        margin-left: @position_checked;
     }
 
 }
+
+
