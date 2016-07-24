@@ -1,0 +1,154 @@
+
+CSS value definition syntax:
+
+
+For example, here's the syntax for the value of the margin shortcut property:
+
+    [ <length> | <percentage> | auto ]{1,4}
+
+which can describe the following:
+
+    margin: 0px;
+    margin: 1px 10%;
+    margin: 1px 0px auto;
+    margin: 1px 0px 1px 0px;
+
+
+Quote < >
+=========
+
+    Basic CSS data types appear between < and >.
+
+    For example, <time>, <color>, and <uri> are basic types that
+    are defined elsewhere.  When you see one of these types, you
+    know that any valid value in that data type may be used.
+
+    Any words between “<” and “>” give a type of value or a reference
+    to another property. For example:
+
+        <length> means that a fixed length value such as 10px.
+
+    When a keyword appears without quotes, it indicates that the
+    word should be used as it is, such as in the case of the "auto"
+    keyword in the above example.
+
+    More example of value definition:
+
+        [ <length> | thick | thin ]{1,4}
+        [ <family-name> , ]* <family-name>
+        <url>? <color> [ / <color> ]?
+        <url> || <color>
+
+    The forward slash (/) and the comma (,) must also be used literally.
+
+
+Bracket []
+==========
+
+    Brackets ([]) group values together into one unit.
+    It enclose several entities, combinator, and multiplier
+    then transform them as a single component.
+
+    They are used to group components to bypass the precedence rules
+
+
+---------------------------
+
+
+
+------ rules --------
+
+Let capital leter such as A, B, X, Y be components consist of
+key words, literals, or data types, then:
+
+A | B | C
+Alternative:
+    Only one of A or B or C (non optional)
+
+A || B
+logical or:
+    A or B or both.
+    At least one of them must present (non optional).
+    Order not important.
+
+A && B
+logical And:
+    A and B are both mandatory
+    Order not important.
+
+A B C
+Justaposition:
+    means all of component are mandatory
+    must occur with order as shown (the only rules where order matters).
+
+Precedence:
+
+    ----- Highest
+        =spaces=  Juxtapositon
+        &&        AND
+        ||        OR
+        |         Alternative
+    ------ Lowest
+
+    Precedence examples:
+
+      • Juxtaposition has precedence over the double ampersand, eg:
+
+            A B && C
+
+            means: [A B] && C.
+            correct:   A B C or C A B
+            incorrect: B A C (order of juxtaposition was not preserve)
+
+      • The double ampersand has precedence over the double bar
+
+            A || B && C
+            means: A || [B && C]
+            correct:
+
+               A B C
+               A C B
+               B C A
+               C B A
+               B C
+               C B
+               A
+
+            incorrect:
+
+               B A C (B and C must not be broken up, as they are a unit as component)
+               C A B (B and C must not be broken up, as they are a unit as component)
+
+      • The double bar has precedence over the single bar
+
+
+            A | B || C
+            means: A | [ B || C ]
+            correct:
+                A
+                B
+                C
+                B C
+                C B
+            incorrect:
+                A B ( either A or  [B || C] )
+
+
+Multiplyer
+=========
+
+    A*
+    A can be repeated zero or more (A is optional)
+
+    A+
+    A can be repeated one or more (A is not optional)
+
+    A?
+    A can be repeated zero or maximum of one. (A is optional)
+
+
+
+
+
+http://www.dummies.com/how-to/content/a-quick-guide-to-the-css-value-definition-syntax.html
+https://developer.mozilla.org/en/docs/Web/CSS/Value_definition_syntax
